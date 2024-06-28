@@ -1,5 +1,17 @@
 def count_item_and_sort(items):
-    result = ""
+    # Menghitung jumlah kemunculan setiap item
+    count_dict = {}
+    for item in items:
+        if item in count_dict:
+            count_dict[item] += 1
+        else:
+            count_dict[item] = 1
+    
+    # Mengurutkan berdasarkan jumlah kemunculan dan kemudian secara leksikografis
+    sorted_items = sorted(count_dict.items(), key=lambda x: (x[1], x[0]))
+    
+    # Membuat string hasil
+    result = " ".join([f"{item}->{count}" for item, count in sorted_items])
     return result
 
 if __name__ == "__main__":
